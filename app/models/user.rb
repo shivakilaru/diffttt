@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	
 	has_many :diffs
 	
-	before_save { |user| user.name = email.downcase }
+	before_save { |user| user.email = email.downcase }
 	
 	validates :name, :presence => true, length: {maximum: 50}
 	
