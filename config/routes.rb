@@ -1,8 +1,20 @@
 Diffttt::Application.routes.draw do
-  resources :messages
-  root :to => "messages#new"
-  match 'eat/:food' => 'eat#food'
-  #mount Resque::Server :at "/resque"
+   
+  root :to => 'diffttt#index'
+  
+  resources :users
+  
+  match '/start', to: 'diffttt#sendmsg'
+    
+  match 'diffttt' => 'diffttt#index'
+  match 'diffttt/show' => 'diffttt#show'
+  match 'diffttt/urltest' => 'diffttt#urltest'
+  match 'diffttt-response' => 'diffttt#urltest'
+  
+  match '/signup',  to: 'users#new'
+  match '/signin', to: 'sessions#new' 
+  
+  mount Resque::Server, :at => "/resque"
 
 
   # The priority is based upon order of creation:

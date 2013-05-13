@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Diffttt</title>
+  <title>diffttt</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div class="container">
+	<%= link_to "Home", root_path %>
+          
+          
+          
+          
+	<div class="content">
+	<% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+	
+	
+	<%= yield %>
+	</div>
+</div>
 
 </body>
 </html>
+
+	
+	

@@ -1,0 +1,15 @@
+body {
+	background-image: image-url("bg.png");
+}
+
+.content {
+	background:rgba(255,255,255,0.7);
+	border-radius:10px;
+	margin:0 auto;
+	padding:20px;
+}
+
+.container {
+	width:960px;
+	margin:0 auto;
+}

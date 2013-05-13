@@ -37,4 +37,6 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'resque'
+gem 'resque', :require => "resque/server"
+gem 'nokogiri'
+gem 'bcrypt-ruby'
