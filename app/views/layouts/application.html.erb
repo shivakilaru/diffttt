@@ -10,7 +10,15 @@
 
 <div class="container">
 	<%= link_to "Home", root_path %>
-          
+	
+    <div class="signin">
+    	<% if signed_in? %>
+    		Hello <%= current_user.name %>. <br/>
+    		<%= link_to "View Profile", current_user %>
+    		<br/>
+    		<%= link_to "Sign out", signout_path, method: "delete" %>
+    	<% end %>
+    </div>    
           
           
           

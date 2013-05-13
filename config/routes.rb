@@ -3,6 +3,7 @@ Diffttt::Application.routes.draw do
   root :to => 'diffttt#index'
   
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   
   match '/start', to: 'diffttt#sendmsg'
     
@@ -12,7 +13,8 @@ Diffttt::Application.routes.draw do
   match 'diffttt-response' => 'diffttt#urltest'
   
   match '/signup',  to: 'users#new'
-  match '/signin', to: 'sessions#new' 
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete 
   
   mount Resque::Server, :at => "/resque"
 
