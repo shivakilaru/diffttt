@@ -1,5 +1,17 @@
 <h1>diffttt</h1>
 <h4>diffttt is a tool to help you monitor web pages of interest.<h4>
-<%= link_to "Sign Up", signup_path %>
-<br/>
-<%= link_to "Sign In", signin_path %>
+
+
+<% if !signed_in? %>
+
+	<%= link_to "Sign Up", signup_path %>
+	<br/>
+	<%= link_to "Sign In", signin_path %>
+
+<% else %>
+
+	Hello <%= current_user.name %>.
+	<br/>
+	<%= link_to 'Create a new diff', start_path %>
+	
+<% end %>

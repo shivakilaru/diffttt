@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513145835) do
+ActiveRecord::Schema.define(:version => 20130513194927) do
+
+  create_table "diffs", :force => true do |t|
+    t.string   "user_id"
+    t.string   "name"
+    t.string   "url"
+    t.string   "div"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "diffs", ["user_id"], :name => "index_diffs_on_user_id"
 
   create_table "messages", :force => true do |t|
     t.text     "text"

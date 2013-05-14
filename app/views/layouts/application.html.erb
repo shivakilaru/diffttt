@@ -14,7 +14,7 @@
     <div class="signin">
     	<% if signed_in? %>
     		Hello <%= current_user.name %>. <br/>
-    		<%= link_to "View Profile", current_user %>
+    		<%= link_to "My Diffs", diffs_path %>
     		<br/>
     		<%= link_to "Sign out", signout_path, method: "delete" %>
     	<% end %>

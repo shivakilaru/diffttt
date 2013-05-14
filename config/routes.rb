@@ -1,16 +1,16 @@
 Diffttt::Application.routes.draw do
    
-  root :to => 'diffttt#index'
+  root :to => 'application#home'
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :diffs
+      
+  match '/start' => 'diffs#new'
   
-  match '/start', to: 'diffttt#sendmsg'
-    
-  match 'diffttt' => 'diffttt#index'
-  match 'diffttt/show' => 'diffttt#show'
-  match 'diffttt/urltest' => 'diffttt#urltest'
-  match 'diffttt-response' => 'diffttt#urltest'
+  match 'diffs/show' => 'diffs#show'
+  match 'diffs/urltest' => 'diffs#urltest'
+  match 'diffs-response' => 'diffs#urltest'
   
   match '/signup',  to: 'users#new'
   match '/signin', to: 'sessions#new'

@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     super
   end
   
+  def home
+	render "home/index"
+  end
+  
 end

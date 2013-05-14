@@ -1,12 +1,12 @@
 body {
-	background-image: image-url("bg.png");
 }
 
 .content {
-	background:rgba(255,255,255,0.7);
+	background:rgba(200,200,200,0.7);
 	border-radius:10px;
-	margin:0 auto;
-	padding:20px;
+	margin:50px auto;
+	padding:30px;
+	line-height:20px;
 }
 
 .container {
