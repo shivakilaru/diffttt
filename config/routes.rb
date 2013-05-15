@@ -7,8 +7,9 @@ Diffttt::Application.routes.draw do
   resources :diffs
       
   match '/start' => 'diffs#new'
-  
-  match '/diffy' => 'diffs#test'
+
+  match '/test' => 'diffs#test'
+
   
   match 'diffs/show' => 'diffs#show'
   match 'diffs/urltest' => 'diffs#print'

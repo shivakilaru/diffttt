@@ -11,6 +11,11 @@ class DiffsController < ApplicationController
 			params[:diff][:url].insert(0, 'http://')
 		end
 		
+		content = Nokogiri::HTML(open(@diff.url)).to_s()
+		
+		scrape = Scrape.new
+		scrape = @diff.scrapes.build(:content => content)
+		
 		respond_to do |format|
 		  if @diff.save
 			format.html { redirect_to @diff, notice: 'User was successfully created.' }
@@ -56,12 +61,26 @@ class DiffsController < ApplicationController
 		render "response"
 	end
 	
+
+		
 	
 	
 	def test
 		require 'open-uri'
-		@site1 = Nokogiri::HTML(open('http://shivakilaru.com/Test')).to_s()
-		@site2 = Nokogiri::HTML(open('http://shivakilaru.com/Test2')).to_s()
+		
+		current_diff = Diff.find(params[:format])
+		
+		@site1 = Nokogiri::HTML(open(current_diff.url)).to_s()
+		@site2 = Scrape.find(:last, :conditions => [ "diff_id = ?", current_diff.id]).content.to_s
+		
+		scrape = Scrape.new
+		scrape = current_diff.scrapes.build(:content => @site1)
+		if scrape.save
+			puts "Scrape saved successfully"
+		else
+			puts "Scrape fail"
+		end
+		
 		@output = Diffy::Diff.new(@site1, @site2, :include_plus_and_minus_in_html => true).to_s(:html)
 		render "output"
 	end

@@ -3,9 +3,12 @@ class Diff < ActiveRecord::Base
 	attr_accessible :url, :div, :name
 	
 	belongs_to :user
+	
+	has_many :scrapes
 		
-	URL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	DIV_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+# 	Need to find working regexes for these
+# 	URL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+# 	DIV_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	
 	validates :url,
 		:presence => true

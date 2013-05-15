@@ -3,7 +3,7 @@
 
 
 
-	<%= form_tag "urltest" do %>
+	<%= form_tag "test" do %>
 
 	<p>
 	  <b>Name:</b>
@@ -24,7 +24,7 @@
 	</p>
 	  <%= submit_tag "Print HTML" %>
 	<% end %>
-	<%= link_to "Diff this!", diffy_path %>
+	<%= link_to "Diff this!", test_path(@diff) %>
 	
 	
 	
