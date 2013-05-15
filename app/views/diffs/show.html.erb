@@ -1,14 +1,22 @@
+<%= form_tag "urltest" do %>
+
 <p>
   <b>Name:</b>
   <%= @diff.name %>
+  <%= hidden_field_tag 'name', @diff.name %>
 </p>
 
 <p>
   <b>URL:</b>
   <%= @diff.url %>
+  <%= hidden_field_tag 'url', @diff.url %>
 </p>
 
 <p>
   <b>Div:</b>
   <%= @diff.div %>
+  <%= hidden_field_tag 'div', @diff.div %>
 </p>
+
+  <%= submit_tag "Print HTML" %>
+<% end %>

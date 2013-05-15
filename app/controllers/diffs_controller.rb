@@ -5,6 +5,9 @@ class DiffsController < ApplicationController
 	end
 	
 	def create
+		if !params[:diff][:url].include? "http://"
+			params[:diff][:url].insert(0, 'http://')
+		end
 		@diff = current_user.diffs.build(params[:diff])
 		
 		respond_to do |format|
@@ -28,7 +31,7 @@ class DiffsController < ApplicationController
     end
 	
 	def index
-		@diffs = Diff.all
+		@diffs = Diff.where(["user_id = ?", current_user.id])
 	end
 	
 	def sendmsg
@@ -38,15 +41,15 @@ class DiffsController < ApplicationController
 	
 # 	def show
 # 		render :text => "#{params[:message]}"
-#  		Resque.enqueue(Click, "james")
+#  		Resque.enqueue(Click)
 # 	end
 	
 	def urltest
 		require 'open-uri'
-		@response = Nokogiri::HTML(open(@diff.url))
-		@div = @response.at_css("#work").content
-		@xpath = Nokogiri::CSS.xpath_for '#work'
-		@textbyxpath = @response.xpath(@xpath).count
+		@response = Nokogiri::HTML(open(params[:url]))
+#		@div = @response.at_css("#work").content
+# 		@xpath = Nokogiri::CSS.xpath_for '#work'
+# 		@textbyxpath = @response.xpath(@xpath).count
 		render "response"
 	end
 end

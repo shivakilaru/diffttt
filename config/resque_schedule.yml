@@ -1,0 +1,5 @@
+click:
+  every: 30s
+  class: Click
+  args:
+  description: Runs the perform method in Click

@@ -40,3 +40,4 @@ gem 'jquery-rails'
 gem 'resque', :require => "resque/server"
 gem 'nokogiri'
 gem 'bcrypt-ruby'
+gem 'resque-scheduler' # job scheduling

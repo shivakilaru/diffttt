@@ -1,7 +1,7 @@
 module Click
 	@queue = :clicks
 	
-	def self.perform(lastname)
-		puts "Rick #{lastname}!"
+	def self.perform()
+		puts "Rick James!"
 	end
 end
