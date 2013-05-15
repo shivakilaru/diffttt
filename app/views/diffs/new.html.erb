@@ -3,19 +3,7 @@
 <div>
 	<%= form_for(@diff) do |f| %>
 
-	  
-	<% if @diff.errors.any? %>
-		<div id="error_explanation">
-			<div class="alert alert-error">
-			The form contains <%= pluralize(@diff.errors.count, "error") %>.
-			</div>
-			<ul>
-				<% @diff.errors.full_messages.each do |msg| %>
-				<li>* <%= msg %> </li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
+	<%= render :partial => "shared/error_messages", :locals => {:obj => @diff} %>
 
 	  <%= f.label :name %>
 	  <%= f.text_field :name %>
@@ -32,6 +20,5 @@
 	  <%= f.submit "Create my diff" %>
 	  <br/>
 	<% end %>
-	
 	
 </div>

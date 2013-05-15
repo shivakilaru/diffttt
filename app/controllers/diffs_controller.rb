@@ -5,10 +5,11 @@ class DiffsController < ApplicationController
 	end
 	
 	def create
-		if !params[:diff][:url].include? "http://"
+		@diff = current_user.diffs.build(params[:diff])
+		
+		if !params[:diff][:url].include? "http://" and !params[:diff][:url].empty?
 			params[:diff][:url].insert(0, 'http://')
 		end
-		@diff = current_user.diffs.build(params[:diff])
 		
 		respond_to do |format|
 		  if @diff.save
@@ -44,12 +45,25 @@ class DiffsController < ApplicationController
 #  		Resque.enqueue(Click)
 # 	end
 	
-	def urltest
+	
+	
+	def print
 		require 'open-uri'
-		@response = Nokogiri::HTML(open(params[:url]))
+		@response = Nokogiri::HTML(open(params[:url])).to_s().html_safe
 #		@div = @response.at_css("#work").content
 # 		@xpath = Nokogiri::CSS.xpath_for '#work'
 # 		@textbyxpath = @response.xpath(@xpath).count
 		render "response"
 	end
+	
+	
+	
+	def test
+		require 'open-uri'
+		@site1 = Nokogiri::HTML(open('http://shivakilaru.com/Test')).to_s()
+		@site2 = Nokogiri::HTML(open('http://shivakilaru.com/Test2')).to_s()
+		@output = Diffy::Diff.new(@site1, @site2, :include_plus_and_minus_in_html => true).to_s(:html)
+		render "output"
+	end
+	
 end

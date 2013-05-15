@@ -37,7 +37,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'resque', :require => "resque/server"
-gem 'nokogiri'
-gem 'bcrypt-ruby'
-gem 'resque-scheduler' # job scheduling
+gem 'resque', :require => "resque/server" 	# for background jobs
+gem 'nokogiri' 								# to scrape html
+gem 'bcrypt-ruby' 							# for passwords
+gem 'resque-scheduler' 						# to schedule html scraping
+gem 'diffy' 								# to diff html responses

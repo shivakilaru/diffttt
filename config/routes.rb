@@ -8,9 +8,10 @@ Diffttt::Application.routes.draw do
       
   match '/start' => 'diffs#new'
   
+  match '/diffy' => 'diffs#test'
+  
   match 'diffs/show' => 'diffs#show'
-  match 'diffs/urltest' => 'diffs#urltest'
-  match 'diffs-response' => 'diffs#urltest'
+  match 'diffs/urltest' => 'diffs#print'
   
   match '/signup',  to: 'users#new'
   match '/signin', to: 'sessions#new'
