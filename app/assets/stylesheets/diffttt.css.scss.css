@@ -88,6 +88,14 @@ a {
 	border-radius:6px;
 }
 
+#big {
+	margin:40px auto;
+	display:block;
+	font-size:20px;
+	width:120px;
+	border-radius:100px;
+}
+
 #start {
 	width:90px;
 }
@@ -130,6 +138,11 @@ tr {
 
 td {
 	font-size: 16px;
+}
+
+td > a:visited, td > a {
+	color:#3cf;
+	font-weight:bold;
 }
 
 .diff-form {

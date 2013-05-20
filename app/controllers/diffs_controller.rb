@@ -68,12 +68,15 @@ class DiffsController < ApplicationController
 	def test
 		require 'open-uri'
 		
-		current_diff = Diff.find(params[:format])
+		@current_diff = Diff.find(params[:format])
 		
 		puts "UTILITYMSG: Starting test"
 		
-		@site1 = Nokogiri::HTML(open(current_diff.url)).to_s()
-		@site2 = Scrape.find(:last, :conditions => [ "diff_id = ?", current_diff.id])
+		@site1 = Nokogiri::HTML(open(@current_diff.url))
+		
+		@site1 = @site1.css(@current_diff.div).first.to_s
+		
+		@site2 = Scrape.find(:last, :conditions => [ "diff_id = ?", @current_diff.id])
 		
 		if @site2.nil?
 			@site2 = @site1
@@ -84,7 +87,7 @@ class DiffsController < ApplicationController
 		
 		
 		scrape = Scrape.new
-		scrape = current_diff.scrapes.build(:content => @site1)
+		scrape = @current_diff.scrapes.build(:content => @site1)
 		if scrape.save
 			puts "UTILITYMSG: Scrape saved successfully"
 		else

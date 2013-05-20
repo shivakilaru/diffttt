@@ -1,18 +1,16 @@
-<h1>Sign In</h1>
+<h1>Sign in.</h1>
+
+<br/>
 
 <%= form_for(:session, url: sessions_path) do |f| %>
-	<%= f.label :email %>
-	<%= f.text_field :email %>
-	<br/>
+	<%= f.label :email, :class => 'boldtext' %><br/>
+	<%= f.text_field :email, :class => 'field' %>
+	<br/><br/>
 	
-	<%= f.label :password %>
-	<%= f.password_field :password %>
-	<br/>
+	<%= f.label :password, :class => 'boldtext' %><br/>
+	<%= f.password_field :password, :class => 'field' %>
+	<br/><br/>
 	
-	<%= f.submit "Sign In" %>
+	<%= f.submit "Sign In", :class => 'btn' %>
 	<br/>
 <% end %>
-
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
-
-<%= link_to 'Back', root_url %>
