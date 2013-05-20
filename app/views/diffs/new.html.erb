@@ -1,23 +1,34 @@
 <h1>Create a New Diff</h1>
 
+<div class="instructions">
+	Here's how it works: you enter the URL of the page you're interested in, along with the CSS selector (.class or #id) of the particular DOM element you want to monitor. You can also enter a name to make the diff easier to remember.
+</div>
+<br/>
+
 <div>
 	<%= form_for(@diff) do |f| %>
 
 	<%= render :partial => "shared/error_messages", :locals => {:obj => @diff} %>
 
-	  <%= f.label :name %>
-	  <%= f.text_field :name %>
-	  <br/>
+	  <%= f.label :name, "URL", :class => 'boldtext'  %><br/>
+	  <%= f.text_field :url, 
+	  		:class => 'field', 
+	  		:placeholder => 'Ex: google.com' %>
+	  <br/><br/>
 
-	  <%= f.label :url %>
-	  <%= f.text_field :url %>
-	  <br/>
+	  <%= f.label :name, "CSS Selector of Target", :class => 'boldtext' %><br/>
+	  <%= f.text_field :div, 
+	  		:class => 'field',
+	  		:placeholder => 'Ex: #hplogo' %>
+	  <br/><br/>
+	  
+	  <%= f.label :name, "Name this Diff (optional)", :class => 'boldtext' %><br/>
+	  <%= f.text_field :name, 
+	  		:class => 'field',
+	  		:placeholder => 'Ex: "Google homepage logo"' %>
+	  <br/><br/>
 
-	  <%= f.label :div %>
-	  <%= f.text_field :div %>
-	  <br/>
-
-	  <%= f.submit "Create my diff" %>
+	  <%= f.submit "Create my diff", :class => 'btn' %>
 	  <br/>
 	<% end %>
 	

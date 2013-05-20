@@ -1,19 +1,24 @@
-<h1>diffttt</h1>
-<h4>diffttt is a tool to help you monitor web pages of interest.<h4>
+
 
 
 <% if !signed_in? %>
-
+	<h1 class="slogan">diffttt is a tool to help you monitor web pages of interest.</h1>
 	<%= link_to "Sign Up", signup_path %>
-	<br/>
-	<%= link_to "Sign In", signin_path %>
 
 <% else %>
-
-	Hello <%= current_user.name %>.
-	<br/>
-	<%= link_to 'Create a new diff', start_path %>
-	<br/>
-	<%= link_to "My Diffs", diffs_path %>
+	
+	<h2 class="current-diffs">You have
+	<a class="diff-number" href='<%=diffs_path%>'>
+		<%= current_user.diffs.count %> diff<% if current_user.diffs.count != 1 %>s<% end %>.
+	</a>
+	</h2>
+	
+	<br/> 
+	
+	<a href='<%=start_path%>'>
+		<div class="btn" id="start">
+			New Diff
+		</div>
+	</a>
 	
 <% end %>

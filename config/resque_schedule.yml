@@ -1,5 +1,5 @@
-click:
-  every: 30s
-  class: Click
+scraper:
+  every: 1m
+  class: Scraper
   args:
-  description: Runs the perform method in Click
+  description: Runs the perform method in ScrapeSchedule

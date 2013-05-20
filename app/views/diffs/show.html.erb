@@ -1,7 +1,8 @@
+<h1>Diff Specs</h1>
 <% if current_user == @diff.user %>
 
 
-
+<div class="diff-form">
 
 	<%= form_tag "test" do %>
 
@@ -22,11 +23,16 @@
 	  <%= @diff.div %>
 	  <%= hidden_field_tag 'div', @diff.div %>
 	</p>
-	  <%= submit_tag "Print HTML" %>
+	
 	<% end %>
-	<%= link_to "Diff this!", test_path(@diff) %>
 	
+	</div>
 	
+	<a href="<%= test_path(@diff) %>" class="btn">Diff now!</a>
+	
+<br/><br/><br/>
+
+<h2>History</h2>
 	
 	
 <% else %>

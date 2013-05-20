@@ -2,35 +2,47 @@
 <html>
 <head>
   <title>diffttt</title>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="container">
-	<%= link_to "Home", root_path %>
-	
-    <div class="signin">
-    	<% if signed_in? %>
-    		Hello <%= current_user.name %>. <br/>
-    		<%= link_to "My Diffs", diffs_path %>
-    		<br/>
-    		<%= link_to "Sign out", signout_path, method: "delete" %>
-    	<% end %>
-    </div>    
-          
-          
-          
-	<div class="content">
-	<% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-	
-	
-	<%= yield %>
+	<div class="container">
+		<div class="broken-wrapper">
+
+			<div class="header">
+		
+				<a href='<%=root_path%>' class="home-link">
+					<div class="home-icon">
+					</div>
+				</a>
+			
+				<div class="signin">
+					<ul>
+					<% if signed_in? %>
+						<li class="nav-link" style="color:black">Hello, <%= current_user.name %>.</li>
+						<li class="nav-link"><a href='<%=diffs_path%>'>My Diffs</a></li>
+						<li class="nav-link"><%= link_to "Sign out", signout_path, method: "delete" %></li>
+					<% else %>
+						<li class="nav-link"><%= link_to "Sign In", signin_path %></li>
+					<% end %>
+					</ul>
+				</div>       
+		  
+			</div>
+		
+		
+			<div class="content">
+			<% flash.each do |key, value| %>
+				<div class="alert alert-<%= key %>"><%= value %></div>
+			  <% end %>
+			<br/> 
+			<%= yield %>
+			</div>
+			
 	</div>
-</div>
 
 </body>
 </html>

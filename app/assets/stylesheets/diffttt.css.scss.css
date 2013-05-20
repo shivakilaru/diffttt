@@ -1,19 +1,141 @@
 body {
+	width:100%;
+	font-family:'Helvetica';
 }
 
-.content {
-	background:rgba(200,200,200,0.7);
-	border-radius:10px;
-	margin:50px auto;
-	padding:30px;
-	line-height:20px;
+a {
+	text-decoration:none;
 }
 
 .container {
-	width:960px;
+	width:840px;
 	margin:0 auto;
 }
 
+.broken-wrapper {
+	width:100%;
+	float:left;
+	margin-top:90px;
+}
+
+.header {
+	float:left;
+	display:block;
+	width:100%;
+	margin-bottom:30px;
+}
+
+.nav-link {
+	list-style-type:none;
+	clear:none;
+	float:left;
+}
+
+.signin {
+	float:right;
+}
+
+.home-icon {
+	background-image:url('diffttt-logo.png');
+	background-size:cover;
+	height:30px;
+	width:200px;
+}
+
+.home-link {
+	float:left;
+}
+
+.nav-link, .nav-link > a {
+	font-size: 16px;
+	margin-left:25px;
+	line-height: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	color: rgb(51, 204, 255);
+}
+
+.boldtext {
+	font-weight: bold;
+	font-size:14px;
+}
+	
+
+.content {
+	margin:50px auto;
+	line-height:20px;
+}
+
+.slogan {
+	font-size: 24px;
+	line-height:24px;
+	font-weight: bold;
+	color: rgb(51, 51, 51);
+	text-align:center;
+}
+
+.btn {
+	color: #fff;
+	border:none;
+	font-family:helvetica,sans-serif;
+	cursor:pointer;
+	background: #3cf;
+	font-weight: bold;
+	text-align:center;
+	font-size: 16px;
+	line-height:24px;
+	padding:12px 24px;
+	border-radius:6px;
+}
+
+#start {
+	width:90px;
+}
+
+.current-diffs {
+	font-size:24px;
+	letter-spacing:0px;
+}
+
+.diff-number {
+	color: #3cf;
+}
+
+.field {
+	line-height:23px;
+	font-size:16px;
+	font-family:helvetica, sans-serif;
+	border-radius:3px;
+	border:1px solid rgba(0,0,0,0.2);
+	padding:5px;
+	width:300px;
+}
+
+.instructions {
+	font-size:14px;
+	margin-bottom:20px;
+}
+
+th {
+	margin-right:40px;
+	min-width:200px;
+	text-align:left;
+	font-size:18px;
+}
+
+tr {
+	line-height:30px;
+	height:30px;
+}
+
+td {
+	font-size: 16px;
+}
+
+.diff-form {
+	font-size:18px;
+	margin:30px 0px;
+}
 
 
 /* -------------- Diffy Styles ------------------ */

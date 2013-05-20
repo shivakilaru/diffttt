@@ -1,14 +1,11 @@
 <% if signed_in? %>
-	<h1>Listing Diffs</h1>
-
+	<h1>My Diffs</h1>
+	<br/>
 	<table>
-	  <tr>
-		<th>Name</th>
-		<th>URL</th>
-		<th>Div</th>
-		<th></th>
-		<th></th>
-		<th></th>
+	  <tr class="boldtext">
+		<th class="table-column">Name</th>
+		<th class="table-column">URL</th>
+		<th class="table-column">CSS Selector</th>
 	  </tr>
 
 	<% @diffs.each do |diff| %>
