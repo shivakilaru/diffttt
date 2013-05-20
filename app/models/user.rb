@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	
-	attr_accessible :email, :name, :password, :password_confirmation
+	attr_accessible :email, :name, :phone, :password, :password_confirmation
 	
 	has_secure_password
 	
@@ -16,9 +16,7 @@ class User < ActiveRecord::Base
 	#-----------Validators----------#
 	
 	validates :name, :presence => true, length: {maximum: 50}
-	
-	
-	
+		
 	validates :email, 
 				:presence => true, 
 				format: {with: EMAIL_REGEX}, 

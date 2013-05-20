@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515222132) do
+ActiveRecord::Schema.define(:version => 20130520163446) do
 
   create_table "diffs", :force => true do |t|
     t.string   "user_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130515222132) do
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "change"
   end
 
   create_table "users", :force => true do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130515222132) do
     t.string "email"
     t.string "password_digest"
     t.string "remember_token"
+    t.string "phone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

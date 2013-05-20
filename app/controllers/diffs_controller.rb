@@ -17,8 +17,8 @@ class DiffsController < ApplicationController
 		  	content = Nokogiri::HTML(open(@diff.url)).to_s()
 		
 			scrape = Scrape.new
-			scrape = @diff.scrapes.build(:content => content)
-			format.html { redirect_to @diff, notice: 'User was successfully created.' }
+			scrape = @diff.scrapes.build(:content => content, :change => nil)
+			format.html { redirect_to @diff, notice: 'Diff was successfully created.' }
 			format.json { render json: @diff, status: :created, location: @user }
 		  else
 			format.html { render action: "new" }
@@ -29,6 +29,7 @@ class DiffsController < ApplicationController
 	
 	def show
     	@diff = Diff.find(params[:id])
+    	@scrapes = Scrape.where(["diff_id = ?", @diff.id]).order('created_at DESC')
     	
     	respond_to do |format|
     		format.html
@@ -44,25 +45,6 @@ class DiffsController < ApplicationController
 		comments_from_form = params['myform'][:greeting]
 		render comments_from_form
 	end
-	
-# 	def show
-# 		render :text => "#{params[:message]}"
-#  		Resque.enqueue(Click)
-# 	end
-	
-	
-	
-	def print
-		require 'open-uri'
-		@response = Nokogiri::HTML(open(params[:url])).to_s().html_safe
-#		@div = @response.at_css("#work").content
-# 		@xpath = Nokogiri::CSS.xpath_for '#work'
-# 		@textbyxpath = @response.xpath(@xpath).count
-		render "response"
-	end
-	
-
-		
 	
 	
 	def test
@@ -80,22 +62,30 @@ class DiffsController < ApplicationController
 		
 		if @site2.nil?
 			@site2 = @site1
+			newdiff = false
 		else
 			@site2 = @site2.content.to_s
+			newdiff = true
 		end
 		
-		
+		if newdiff
+			puts "UTILITYMSG: newdiff is true" 
+			@output = Diffy::Diff.new(@site2, @site1, :include_plus_and_minus_in_html => true, :allow_empty_diff => true).to_s(:html)
+		else
+			puts "UTILITYMSG: newdiff is false" 
+			@output = Diffy::Diff.new(@site2, @site1, :include_plus_and_minus_in_html => true).to_s(:html)
+		end
 		
 		scrape = Scrape.new
-		scrape = @current_diff.scrapes.build(:content => @site1)
+		scrape = @current_diff.scrapes.build(:content => @site1, :change => @output)
 		if scrape.save
 			puts "UTILITYMSG: Scrape saved successfully"
 		else
 			puts "UTILITYMSG: Scrape fail"
 		end
 		
-		@output = Diffy::Diff.new(@site2, @site1, :include_plus_and_minus_in_html => true).to_s(:html)
-		render "output"
+		# render "output"
+		redirect_to @current_diff
 	end
 	
 end

@@ -13,13 +13,18 @@
       <%= f.text_field :email, 
 	  		:class => 'field' %>
       <br/><br/>
+      
+      <%= f.label :phone, "Phone Number", :class => 'boldtext' %><br/>
+      <%= f.text_field :phone, 
+	  		:class => 'field' %>
+      <br/><br/>
 
       <%= f.label :password, :class => 'boldtext' %><br/>
       <%= f.password_field :password, 
 	  		:class => 'field' %>
       <br/><br/>
 
-      <%= f.label :password_confirmation, "Confirmation", :class => 'boldtext' %><br/>
+      <%= f.label :password_confirmation, "Password Confirmation", :class => 'boldtext' %><br/>
       <%= f.password_field :password_confirmation, 
 	  		:class => 'field' %>
       <br/>

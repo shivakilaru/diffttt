@@ -1,23 +1,36 @@
 <% if signed_in? %>
 	<h1>My Diffs</h1>
 	<br/>
-	<table>
-	  <tr class="boldtext">
-		<th class="table-column">Name</th>
-		<th class="table-column">URL</th>
-		<th class="table-column">CSS Selector</th>
-	  </tr>
+	
+	<% if @diffs.empty? %>
+		<div class="instructions">
+			You have no diffs. Create a new diff to get started!
+		</div>
+	<% else %>
+		<table>
+		  <tr class="boldtext">
+			<th>Name</th>
+			<th>URL</th>
+			<th>CSS Selector</th>
+		  </tr>
 
-	<% @diffs.each do |diff| %>
-	  <tr>
-		<td><%= link_to diff.name, diff %></td>
-		<td><%= diff.url %></td>
-		<td><%= diff.div %></td>
-	  </tr>
+		<% @diffs.each do |diff| %>
+		  <tr>
+			<td><%= link_to diff.name, diff %></td>
+			<td><%= diff.url %></td>
+			<td><%= diff.div %></td>
+		  </tr>
+		<% end %>
+		</table>
+		<br/>
 	<% end %>
-	</table>
-
-	<br />
+	
+	<a href='<%=start_path%>'>
+		<div class="btn" id="start">
+			New Diff
+		</div>
+	</a>
+	
 <% else %>
 	<script>
 	window.location = "<%= escape_javascript(signin_path) %>";

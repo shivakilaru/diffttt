@@ -33,7 +33,35 @@
 <br/><br/><br/>
 
 <h2>History</h2>
+
+	<% if @scrapes.empty? %>
+		<div class="instructions">
+			No changes yet.
+		</div>
+	<% else %>
 	
+		<table>
+		  <tr class="boldtext">
+			<th class="th-date">Date</th>
+			<th class="th-content">Content</th>
+		  </tr>
+	
+
+		<% @scrapes.each do |scrape| %>
+		  <tr class="changes">
+			<td class="td-date"><%= scrape.created_at.strftime("%A, %B %d") %><br/><%= scrape.created_at.strftime("at %I:%M%p") %></td>
+			<td>
+				<% if !scrape.change.html_safe[42] %>
+					No change.
+				<% else %>
+					<%= scrape.change.html_safe %>
+				<% end %>
+			</td>
+		  </tr>
+		<% end %>
+		</table>
+		
+	<% end %>
 	
 <% else %>
 	<script>

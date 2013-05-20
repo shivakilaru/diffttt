@@ -42,3 +42,4 @@ gem 'nokogiri' 								# to scrape html
 gem 'bcrypt-ruby' 							# for passwords
 gem 'resque-scheduler' 						# to schedule html scraping
 gem 'diffy' 								# to diff html responses
+gem 'twilio-ruby' 							# to notify the user
