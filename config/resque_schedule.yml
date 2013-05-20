@@ -1,5 +1,5 @@
 scraper:
-  every: 10m
+  every: 7m
   class: Scraper
   args:
   description: Runs the perform method in ScrapeSchedule

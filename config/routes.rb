@@ -10,6 +10,7 @@ Diffttt::Application.routes.draw do
 
   match '/test' => 'diffs#test'
 
+  match '/about' => 'diffs#about'
   
   match 'diffs/show' => 'diffs#show'
   match 'diffs/urltest' => 'diffs#print'

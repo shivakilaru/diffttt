@@ -7,7 +7,7 @@ class DiffsController < ApplicationController
 	def create
 		@diff = current_user.diffs.build(params[:diff])
 		
-		if !params[:diff][:url].include? "http://" and !params[:diff][:url].empty?
+		if !params[:diff][:url].include? "htt" and !params[:diff][:url].empty?
 			params[:diff][:url].insert(0, 'http://')
 		end
 		
@@ -41,9 +41,9 @@ class DiffsController < ApplicationController
 		@diffs = Diff.where(["user_id = ?", current_user.id])
 	end
 	
-	def sendmsg
-		comments_from_form = params['myform'][:greeting]
-		render comments_from_form
+	
+	def about
+		render "about"
 	end
 	
 	
