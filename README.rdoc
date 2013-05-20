@@ -1,3 +1,3 @@
 == diffttt
 
-diffttt is a tool to help you monitor web pages of interest. Here's how it works: you enter the URL of the page you're interested in, along with the CSS selector (.class or #id) of the particular DOM element you want to monitor. You can also enter a name to make the diff easier to remember.
+diffttt is a tool to help you monitor web pages of interest. Here's how it works: you enter the URL of the page you're interested in, along with the CSS selector (.class or #id) of the particular DOM element you want to monitor. diffttt will scrape the page every 30 minutes and begin to create a history of that element. It can also notify you any time a change is logged.
