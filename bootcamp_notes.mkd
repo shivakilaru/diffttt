@@ -1,9 +1,11 @@
 # Miscellaneous Bootcamp Notes
-================================
+(personal reference. none of this belongs to me.)
 
-### Class Variables vs. Instance Variables vs. Normal Variables
--------------------------
-Instance vs. normal:
+### Ruby
+#### Class Variables vs. Instance Variables vs. Normal Variables
+
+__Instance vs. normal:__ 
+A normal variable has scope only within the current context; an instance variable has scope throughout one instance of a class.
 ```ruby
 class User
   def set_name
@@ -29,7 +31,8 @@ Hello, Bob
 irb(main):025:0> u.hello
 NameError: undefined local variable or method `surname' for #<User:0x29cbfb0 @name="Bob">
 ```
-Class vs. instance:
+===============================
+__Class vs. instance:__
 When you set a class variable, you set it for the superclass and all of the subclasses.
 ```ruby
 class Triangle < Polygon
@@ -38,4 +41,27 @@ end
 
 puts Triangle.sides # => 3
 puts Polygon.sides # => 3
+```
+
+
+### JavaScript
+#### Defining functions
+There are many different ways to define and then call a function:
+```javascript
+function isNimble(){ return true; } 
+var canFly = function(){ return true; }; 
+window.isDeadly = function(){ return true; }; 
+log(isNimble, canFly, isDeadly);
+
+>>> function isNimble(){ return true; } function (){ return true; } function (){ return true; }
+```
+==============================
+The order of function definition doesn't necessarily matter.
+```javascript
+var canFly = function(){ return true; }; 
+window.isDeadly = function(){ return true; }; 
+assert( isNimble() && canFly() && isDeadly(), "Still works, even though isNimble is moved." ); 
+function isNimble(){ return true; }
+
+>>> Still works, even though isNimble is moved.
 ```
