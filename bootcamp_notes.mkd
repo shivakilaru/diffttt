@@ -3,8 +3,6 @@
 
 ### Ruby
 #### Class Variables vs. Instance Variables vs. Normal Variables
-========================s
-
 __Instance vs. normal:__ 
 A normal variable has scope only within the current context; an instance variable has scope throughout one instance of a class.
 ```ruby
@@ -46,7 +44,6 @@ puts Polygon.sides # => 3
 
 ### JavaScript
 #### Defining functions
-==============================
 There are many different ways to define and then call a function:
 ```javascript
 function isNimble(){ return true; } 
@@ -64,4 +61,35 @@ assert( isNimble() && canFly() && isDeadly(), "Still works, even though isNimble
 function isNimble(){ return true; }
 
 >>> Still works, even though isNimble is moved.
+```
+Functions can have multiple names.
+```javascript
+var ninja = function myNinja(){ 
+  assert( ninja == myNinja, "This function is named two things - at once!" ); 
+}; 
+ninja(); 
+assert( typeof myNinja == "undefined", "But myNinja isn't defined outside of the function." );
+
+>>> PASS A single object isn't too bad, either.
+```
+Handy example of pointing functions to other functions, and then corrupting that reference.
+```javascript
+var ninja = { 
+  yell: function(n){ 
+    return n > 0 ? ninja.yell(n-1) + "a" : "hiy"; 
+  } 
+}; 
+assert( ninja.yell(4) == "hiyaaaa", "A single object isn't too bad, either." ); 
+ 
+var samurai = { yell: ninja.yell }; 
+var ninja = null; 
+ 
+try { 
+  samurai.yell(4); 
+} catch(e){ 
+  assert( false, "Uh, this isn't good! Where'd ninja.yell go?" ); 
+}
+
+>>> PASS A single object isn't too bad, either.
+>>> FAIL Uh, this isn't good! Where'd ninja.yell go?
 ```
