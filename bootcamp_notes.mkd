@@ -1,1 +1,30 @@
 # Miscellaneous Bootcamp Notes
+
+### Class Variables vs. Instance Variables vs. Normal Variables
+
+Instance vs. normal:
+```ruby
+class User
+  def set_name
+    @name = "Bob"
+    surname = "Cratchett"
+  end
+
+  def hi
+    puts "Hello, " + @name
+  end
+
+  def hello
+    puts "Hello, Mr " + surname
+  end
+end
+
+irb(main):022:0> u = User.new
+=> #<User:0x29cbfb0>
+irb(main):023:0> u.set_name
+irb(main):024:0> u.hi
+Hello, Bob
+=> nil
+irb(main):025:0> u.hello
+NameError: undefined local variable or method `surname' for #<User:0x29cbfb0 @name="Bob">
+```
