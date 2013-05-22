@@ -1,7 +1,8 @@
 # Miscellaneous Bootcamp Notes
+================================
 
 ### Class Variables vs. Instance Variables vs. Normal Variables
-
+-------------------------
 Instance vs. normal:
 ```ruby
 class User
@@ -27,4 +28,14 @@ Hello, Bob
 => nil
 irb(main):025:0> u.hello
 NameError: undefined local variable or method `surname' for #<User:0x29cbfb0 @name="Bob">
+```
+Class vs. instance:
+When you set a class variable, you set it for the superclass and all of the subclasses.
+```ruby
+class Triangle < Polygon
+  @@sides = 3
+end
+
+puts Triangle.sides # => 3
+puts Polygon.sides # => 3
 ```
