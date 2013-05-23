@@ -68,9 +68,9 @@ var ninja = function myNinja(){
   assert( ninja == myNinja, "This function is named two things - at once!" ); 
 }; 
 ninja(); 
-assert( typeof myNinja == "undefined", "But myNinja isn't defined outside of the function." );
+assert( typeof myNinja == "undefined", "But myNinja isnt defined outside of the function." );
 
->>> PASS A single object isn't too bad, either.
+>>> PASS A single object isnt too bad, either.
 ```
 Handy example of pointing functions to other functions, and then corrupting that reference.
 ```javascript
@@ -79,7 +79,7 @@ var ninja = {
     return n > 0 ? ninja.yell(n-1) + "a" : "hiy"; 
   } 
 }; 
-assert( ninja.yell(4) == "hiyaaaa", "A single object isn't too bad, either." ); 
+assert( ninja.yell(4) == "hiyaaaa", "A single object isnt too bad, either." ); 
  
 var samurai = { yell: ninja.yell }; 
 var ninja = null; 
@@ -87,9 +87,9 @@ var ninja = null;
 try { 
   samurai.yell(4); 
 } catch(e){ 
-  assert( false, "Uh, this isn't good! Where'd ninja.yell go?" ); 
+  assert( false, "Uh, this isnt good! Where'd ninja.yell go?" ); 
 }
 
->>> PASS A single object isn't too bad, either.
->>> FAIL Uh, this isn't good! Where'd ninja.yell go?
+>>> PASS A single object isnt too bad, either.
+>>> FAIL Uh, this isnt good! Where'd ninja.yell go?
 ```
