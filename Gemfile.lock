@@ -59,6 +59,7 @@ GEM
     mono_logger (1.0.1)
     multi_json (1.7.3)
     nokogiri (1.5.9)
+    pg (0.16.0)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -142,6 +143,7 @@ DEPENDENCIES
   diffy
   jquery-rails
   nokogiri
+  pg
   rails (= 3.2.13)
   resque
   resque-scheduler
